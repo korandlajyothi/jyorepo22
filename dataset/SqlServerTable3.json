@@ -1,0 +1,17 @@
+{
+	"name": "SqlServerTable3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "eliminatedduplrows"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

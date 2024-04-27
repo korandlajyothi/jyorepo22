@@ -1,0 +1,17 @@
+{
+	"name": "AzureSqlTable8",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_ompremsql_sqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "eliminatedduplirows"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

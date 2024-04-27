@@ -1,0 +1,13 @@
+{
+	"name": "ds_lkup_ompremsql_sqldb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

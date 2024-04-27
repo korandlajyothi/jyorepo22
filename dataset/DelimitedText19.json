@@ -1,0 +1,24 @@
+{
+	"name": "DelimitedText19",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_blob_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "otp-addingkeys",
+				"container": "cont-incrementkeys"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

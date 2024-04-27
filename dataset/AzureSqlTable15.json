@@ -1,0 +1,24 @@
+{
+	"name": "AzureSqlTable15",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_ompremsql_sqldb",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database": "sqldbadmin"
+			}
+		},
+		"parameters": {
+			"d_schema": {
+				"type": "string"
+			},
+			"d_table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

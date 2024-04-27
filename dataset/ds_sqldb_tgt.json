@@ -1,0 +1,39 @@
+{
+	"name": "ds_sqldb_tgt",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_tgt",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"d_schema": {
+				"type": "string"
+			},
+			"d_table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().d_table",
+					"type": "Expression"
+				},
+				"folderPath": {
+					"value": "@dataset().d_schema",
+					"type": "Expression"
+				},
+				"fileSystem": "cont-onpremtosqldb"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

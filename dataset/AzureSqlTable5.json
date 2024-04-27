@@ -1,0 +1,42 @@
+{
+	"name": "AzureSqlTable5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_ompremsql_sqldb",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database": "sqldbadmin"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "salesdate",
+				"type": "date"
+			},
+			{
+				"name": "saleitem",
+				"type": "varchar"
+			},
+			{
+				"name": "country",
+				"type": "varchar"
+			},
+			{
+				"name": "quantity",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "filenames",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "tbl_sales"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

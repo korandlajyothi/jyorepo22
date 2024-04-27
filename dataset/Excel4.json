@@ -1,0 +1,40 @@
+{
+	"name": "Excel4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_tgt",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Sheet3",
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "configstudent.xlsx",
+				"folderPath": "studentconfig",
+				"fileSystem": "cont-src"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "filenames",
+				"type": "String"
+			},
+			{
+				"name": "databases",
+				"type": "String"
+			},
+			{
+				"name": "tables",
+				"type": "String"
+			},
+			{
+				"name": "schemas",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,34 @@
+{
+	"name": "AzureSqlTable12",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_ompremsql_sqldb",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"database": "sqldbadmin"
+			}
+		},
+		"parameters": {
+			"d_schema": {
+				"type": "string"
+			},
+			"d_table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().d_schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().d_table",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,31 @@
+{
+	"name": "ds_onprem_sqlsrccpy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_src",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"d_schema": {
+				"type": "string"
+			},
+			"d_table": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().d_schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().d_table",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

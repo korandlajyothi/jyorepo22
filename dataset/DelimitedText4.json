@@ -1,0 +1,42 @@
+{
+	"name": "DelimitedText4",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_tgt",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"files": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().files",
+					"type": "Expression"
+				},
+				"folderPath": "csv",
+				"fileSystem": "cont-src"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "s.no",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

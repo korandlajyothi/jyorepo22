@@ -1,0 +1,43 @@
+{
+	"name": "AzureSqlTable11",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_ompremsql_sqldb",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "schema_name",
+				"type": "varchar"
+			},
+			{
+				"name": "table_name",
+				"type": "varchar"
+			},
+			{
+				"name": "keycolumns",
+				"type": "varchar"
+			},
+			{
+				"name": "new_updated_dated",
+				"type": "varchar"
+			},
+			{
+				"name": "load_type",
+				"type": "varchar"
+			},
+			{
+				"name": "is_active",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "config_fulincload"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

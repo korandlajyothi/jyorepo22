@@ -1,0 +1,17 @@
+{
+	"name": "SqlServerTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "eliminateduplrows"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

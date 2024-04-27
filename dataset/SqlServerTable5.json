@@ -1,0 +1,17 @@
+{
+	"name": "SqlServerTable5",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_onpremsql_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "incrementkeys"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

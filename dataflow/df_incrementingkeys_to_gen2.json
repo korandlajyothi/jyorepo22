@@ -1,0 +1,108 @@
+{
+	"name": "df_incrementingkeys_to_gen2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText15",
+						"type": "DatasetReference"
+					},
+					"name": "empwithid"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText16",
+						"type": "DatasetReference"
+					},
+					"name": "empwithoutid"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText19",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "aggregate1"
+				},
+				{
+					"name": "join1"
+				},
+				{
+					"name": "surrogateKey1"
+				},
+				{
+					"name": "derivedColumn2"
+				},
+				{
+					"name": "select1"
+				},
+				{
+					"name": "union1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          id as string,",
+				"          name as string,",
+				"          gender as string,",
+				"          dept as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> empwithid",
+				"source(output(",
+				"          name as string,",
+				"          gender as string,",
+				"          dept as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> empwithoutid",
+				"empwithid derive(dummy = 'dummy') ~> derivedColumn1",
+				"derivedColumn1 aggregate(groupBy(dummy),",
+				"     maxid = max(id)) ~> aggregate1",
+				"aggregate1, empwithoutid join(1==1,",
+				"     joinType:'cross',",
+				"     matchType:'exact',",
+				"     ignoreSpaces: false,",
+				"     broadcast: 'auto')~> join1",
+				"join1 keyGenerate(output(id as long),",
+				"     startAt: 1L,",
+				"     stepValue: 1L) ~> surrogateKey1",
+				"surrogateKey1 derive(id = toString(toInteger(id)+toInteger(maxid))) ~> derivedColumn2",
+				"derivedColumn2 select(mapColumn(",
+				"          id,",
+				"          name,",
+				"          gender,",
+				"          dept",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"empwithid, select1 union(byName: true)~> union1",
+				"union1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['addingkeys'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     mapColumn(",
+				"          id,",
+				"          name,",
+				"          gender,",
+				"          dept",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}

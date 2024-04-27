@@ -1,0 +1,31 @@
+{
+	"name": "ds_onpremsql_sqldb",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Ls_ompremsql_sqldb",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"d_schema": {
+				"type": "string"
+			},
+			"d_file": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().d_schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().d_file",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

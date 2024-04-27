@@ -1,0 +1,9 @@
+{
+	"name": "adfrg22",
+	"location": "centralus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "85796ec2-dd03-4ea1-9ee7-de166f5c3149",
+		"tenantId": "c68e2893-b48a-4485-9005-a085a8d255a4"
+	}
+}

@@ -1,0 +1,74 @@
+{
+	"name": "dataflow_dupli_rows_blob",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText11",
+						"type": "DatasetReference"
+					},
+					"name": "emp"
+				},
+				{
+					"dataset": {
+						"referenceName": "DelimitedText12",
+						"type": "DatasetReference"
+					},
+					"name": "emp2"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText14",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "union1"
+				},
+				{
+					"name": "aggregateduplicaterows"
+				},
+				{
+					"name": "sort1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          empid as string,",
+				"          name as string,",
+				"          country as string,",
+				"          dept as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> emp",
+				"source(output(",
+				"          empid as string,",
+				"          name as string,",
+				"          country as string,",
+				"          dept as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> emp2",
+				"emp, emp2 union(byName: true)~> union1",
+				"union1 aggregate(groupBy(empid),",
+				"     each(match(name!='empid'), $$ = first($$))) ~> aggregateduplicaterows",
+				"aggregateduplicaterows sort(asc(empid, true)) ~> sort1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['otp_duplrows'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
