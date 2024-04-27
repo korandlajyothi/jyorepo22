@@ -1,0 +1,54 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adfrg22"
+		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks2_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks3_accessToken": {
+			"value": ""
+		},
+		"AzureDatabricks4_accessToken": {
+			"value": ""
+		},
+		"Ls_blob_src_connectionString": {
+			"value": ""
+		},
+		"Ls_ompremsql_sqldb_connectionString": {
+			"value": ""
+		},
+		"Ls_onpremsql_src_connectionString": {
+			"value": ""
+		},
+		"Ls_onpremsql_tgt_accountKey": {
+			"value": ""
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "0416-063616-i12s9yc7"
+		},
+		"AzureDatabricks2_properties_typeProperties_existingClusterId": {
+			"value": "0416-063616-i12s9yc7"
+		},
+		"AzureDatabricks3_properties_typeProperties_existingClusterId": {
+			"value": "0416-063616-i12s9yc7"
+		},
+		"AzureDatabricks4_properties_typeProperties_existingClusterId": {
+			"value": "0416-063616-i12s9yc7"
+		},
+		"Ls_onpremsql_tgt_properties_typeProperties_url": {
+			"value": "https://stradlgen2tgt.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
